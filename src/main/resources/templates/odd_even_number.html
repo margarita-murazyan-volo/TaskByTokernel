@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Odd or Even Number</title>
+</head>
+<body>
+
+    <ul action="#" th:each="n:${evenNumbers}">
+        <li th:text="${n.evenNumber}"><li th:text="${n.getUser().name}"></li> </li>
+    </ul>
+
+    <ul action="#" th:each="n:${oddNumbers}">
+        <li th:text="${n.oddNumber}"><li th:text="${n.getUser().name}"></li></li>
+    </ul>
+
+    <a href="/user-page">User home</a>
+
+</body>
+</html>

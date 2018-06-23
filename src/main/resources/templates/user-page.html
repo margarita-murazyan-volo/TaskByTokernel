@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User-Home</title>
+    <link href="tokernel.css" rel="stylesheet">
+</head>
+<body style='background-image: url("images/bg3.jpg")'>
+<div class="container mb30">
+    <div align="right">
+        <h2 th:text="${currentUser.name}"></h2>
+        <h2 th:text="${currentUser.surname}"></h2>
+    <a href="/logout">LogOut</a>
+    </div>
+</div>
+<div>
+    <form th:action="@{/addNumber}" method="post" th:object="${number}" enctype="multipart/form-data"
+          onsubmit=" return f()">
+        <div class="form-group"  style="width: 300px">
+            <input type="text" th:field="*{oddNumber}" class="form-control" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <button type="submit" >Add Number</button>
+        </div>
+    </form>
+    <h2>Click N  for see evenNumber</h2>
+<a href="/even_number">N</a>
+    <h2>Click O for see evenNumber</h2>
+<a href="/odd_number">O</a>
+</div>
+</body>
+</html>

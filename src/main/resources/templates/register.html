@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <title>Login</title>
+    <link href="tokernel.css" rel="stylesheet">
+</head>
+<body style='background-image: url("images/bg2.jpg")'>
+<div style="width: 200px">
+    <h3>Login to continue</h3>
+    <form th:action="@{/addUser}" method="post" th:object="${user}" enctype="multipart/form-data"
+          onsubmit=" return f()">
+        <div class="form-group">
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <input type="text" th:field="*{surname}" class="form-control" placeholder="Surname">
+        </div>
+        <div class="form-group">
+            <input type="text" th:field="*{email}" id="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" th:field="*{password}" class="form-control"
+                   placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input type="password" id="cpassword" class="form-control" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+            <button type="submit" >Sign Up</button>
+        </div>
+        <div>
+            <a href="page-login">Sign In</a>
+        </div>
+    </form>
+</div>
+<script>
+    function f() {
+        var pass = document.getElementById("password").value;
+        var confirm = document.getElementById("cpassword").value;
+        var email = document.getElementById("email");
+        var reg = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        if (!reg.test(email.value)) {
+            email.style.backgroundColor = "blueviolet"
+        }
+        if (pass !== confirm) {
+            document.getElementById("cpassword").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("cpassword").placeholder = "please repeat your password";
+            document.getElementById("password").placeholder = "please input your password";
+            document.getElementById("cpassword").style.backgroundColor = "red";
+            document.getElementById("password").style.backgroundColor = "red";
+            return false;
+        }
+
+    }
+</script>
+</body>
+</html>
